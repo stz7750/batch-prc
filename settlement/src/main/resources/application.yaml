@@ -1,0 +1,30 @@
+spring:
+  batch:
+    jdbc:
+      initialize-schema: always # 배치 실행 시 필요한 메타 테이블을 자동 생성 
+    job:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:15432/batch_db
+    username: stz
+    password: stz191816!
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: settlement
+  jpa:
+    hibernate:
+      ddl-auto: update #Entity를 보고 테이블 자동 생성
+    show-sql: true # 실행되는 SQL을 콘솔에 보여줌 
+    properties:
+      hibernate:
+        format_sql: true # SQL format을 줄바꿈 
+
+logging:
+  level:
+    p6spy: info
+
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
